@@ -66,6 +66,14 @@ var TyperView = Backbone.View.extend({
 		this.wrapper = wrapper;
 		
 		var self = this;
+		var button_pause = $('<button>').addClass('btn').html('Pause').css({
+			'z-index': '1000',
+			position:'absolute',
+			bottom:'60px',
+			left: '150px'
+		}).click(function() {
+			alert('Paused');
+		});
 		var text_input = $('<input>')
 			.addClass('form-control')
 			.css({
@@ -102,7 +110,9 @@ var TyperView = Backbone.View.extend({
 					.submit(function() {
 						return false;
 					})
-					.append(text_input)));
+					.append(text_input)
+					.append(button_pause)
+				));
 		
 		text_input.css({left:((wrapper.width() - text_input.width()) / 2) + 'px'});
 		text_input.focus();
